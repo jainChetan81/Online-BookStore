@@ -13,7 +13,7 @@ class Checkout extends Component {
         books: [],
         loading: true,
         totalPrice: 0,
-        payed: true,
+        payed: false,
     };
     paymentDone = () => {
         this.setState({ payed: true });
