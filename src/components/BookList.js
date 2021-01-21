@@ -32,6 +32,7 @@ const BookList = ({
     history,
     filteredBooks,
     searchString,
+    addMoreBooks,
 }) => {
     const [modalStyle] = React.useState(getModalStyle);
     const [show, showModal] = useState(false);
@@ -80,18 +81,25 @@ const BookList = ({
                         </Auxillary>
                     ) : (
                         <Auxillary>
-                            <div className="row">
-                                {books.map((item) => (
-                                    <BookCard
-                                        key={item.bookID}
-                                        item={item}
-                                        showModalInfo={showModalInfo}
-                                        addToCart={addToCart}
-                                        removeFromCart={removeFromCart}
-                                        history={history}
-                                    />
-                                ))}
-                                
+                            <div className="col">
+                                <div className="row">
+                                    {books.map((item) => (
+                                        <BookCard
+                                            key={item.bookID}
+                                            item={item}
+                                            showModalInfo={showModalInfo}
+                                            addToCart={addToCart}
+                                            removeFromCart={removeFromCart}
+                                            history={history}
+                                        />
+                                    ))}
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={addMoreBooks}
+                                    className="btn btn-outline-warning btn-sm mb-5 mt-0">
+                                    See More
+                                </button>
                             </div>
                         </Auxillary>
                     )}

@@ -6,6 +6,8 @@ db.version(1).stores({
         "bookID, title, authors, average_rating, isbn, language_code, ratings_count, price, inCart, count", //create the database store
     cart:
         "bookID, title, authors, average_rating, isbn, language_code, ratings_count, price, inCart, count",
+    allBooks:
+        "bookID, title, authors, average_rating, isbn, language_code, ratings_count, price, inCart, count",
 });
 
 db.open().catch((err) => {

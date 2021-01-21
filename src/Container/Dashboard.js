@@ -12,6 +12,7 @@ export default class App extends Component {
         loading: false,
         filteredBooks: [],
         searchString: "",
+        allBooks: [],
     };
 
     getBooks = (e) => {
@@ -79,11 +80,13 @@ export default class App extends Component {
         this.setState({ loading: true });
         let books = await db.books.toArray();
         let allCart = await db.cart.toArray();
+        let allBooks = await db.allBooks.toArray();
 
         if (books.length === 0) return this.getNewsItems();
         else {
             return this.setState({
                 books,
+                allBooks,
                 cart: allCart,
                 loading: false,
             });
@@ -98,6 +101,21 @@ export default class App extends Component {
                 .catch((err) => console.log("err", err));
         });
     }
+    addMoreBooks = () => {
+        let books = [...this.state.books];
+        let allBooks = [...this.state.allBooks];
+        const length = books.length;
+        console.log(books.length + 1, allBooks.length);
+        for (
+            let i = books.length;
+            i < length + 12 && i < allBooks.length;
+            i++
+        ) {
+            books.push(allBooks[i]);
+        }
+
+        this.setState({ books });
+    };
 
     getNewsItems() {
         console.log("getNewsItems");
@@ -111,12 +129,15 @@ export default class App extends Component {
                 allBooks.forEach((item) =>
                     allUpdatedBooks.push({ ...item, inCart: false, count: 0 })
                 );
-                let slicedBooks = allUpdatedBooks.slice(0, 50);
+                let slicedBooks = allUpdatedBooks.slice(0, 48);
+                let moreSlicedBooks = allUpdatedBooks.slice(0, 16);
                 this.setState({
-                    books: slicedBooks,
+                    books: moreSlicedBooks,
+                    allBooks: slicedBooks,
                     loading: false,
                 });
-                this.addToIndexDB(slicedBooks, "books");
+                this.addToIndexDB(moreSlicedBooks, "books");
+                this.addToIndexDB(slicedBooks, "allBooks");
             })
             .catch((err) => {
                 console.log(err);
@@ -146,6 +167,7 @@ export default class App extends Component {
                         filteredBooks={this.state.filteredBooks}
                         books={books}
                         cart={cart}
+                        addMoreBooks={this.addMoreBooks}
                         searchString={this.state.searchString}
                         history={this.props.history}
                         addToCart={this.addToCart}
