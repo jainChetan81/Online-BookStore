@@ -99,6 +99,23 @@ export default class App extends Component {
         });
     }
 
+    sortByRatings = () => {
+        const books = [...this.state.books];
+        for (let i = 0; i < books.length; i++) {
+            for (let j = 0; j < i; j++) {
+                if (books[i].average_rating > books[j].average_rating) {
+                    let swap = books[j];
+                    books[j] = books[i];
+                    books[i] = swap;
+                }
+            }
+        }
+        books.forEach((e) => {
+            console.log(e.average_rating);
+        });
+        this.setState({ books });
+    };
+
     getNewsItems() {
         console.log("getNewsItems");
         axios
@@ -136,7 +153,10 @@ export default class App extends Component {
                         Cart : {cart.length}
                     </Link>
                 </header>
-                <Form getBooks={this.getBooks} />
+                <Form
+                    getBooks={this.getBooks}
+                    sortByRatings={this.sortByRatings}
+                />
                 {this.state.loading ? (
                     <Spinner />
                 ) : this.state.books.length < 1 ? (

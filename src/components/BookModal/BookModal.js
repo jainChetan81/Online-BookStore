@@ -1,9 +1,17 @@
 import React, { Component } from "react";
+import StarIcon from "@material-ui/icons/Star";
 
 export default class NewsModal extends Component {
     buyNow(book) {
         if (!book.inCart) this.props.addToCart(book.bookID);
         this.props.history.push("/checkout");
+    }
+    averageRatings(num) {
+        let v = [];
+        for (let i = 1; i < Math.round(num); i++) {
+            v.push(<StarIcon key={i} />);
+        }
+        return v;
     }
     render() {
         const { activeBook, removeFromCart, addToCart } = this.props;
@@ -26,6 +34,29 @@ export default class NewsModal extends Component {
                                 <p>
                                     <b>{activeBook.title}</b>
                                 </p>
+
+                                <h5 className="active-news__publisher">
+                                    Publisher:
+                                    <span>{activeBook["authors"]}</span>
+                                </h5>
+                                <h5 className="active-news__publisher">
+                                    Language:
+                                    <span>
+                                        <strong>
+                                            <i>{activeBook["language_code"]}</i>
+                                        </strong>
+                                    </span>
+                                </h5>
+                                <p className="active-news__publisher">
+                                    Ratings:
+                                    <span>
+                                        {this.averageRatings(
+                                            activeBook.average_rating
+                                        )}
+                                        (Total Ratings:{" "}
+                                        {activeBook.ratings_count})
+                                    </span>
+                                </p>
                                 <p className="lead active-website">
                                     <span>
                                         <button
@@ -44,7 +75,7 @@ export default class NewsModal extends Component {
                                                         activeBook.bookID
                                                     )
                                                 }
-                                                className="news_buttons">
+                                                className="btn btn-danger mx-3">
                                                 Remove From Cart
                                             </button>
                                         ) : (
@@ -52,16 +83,12 @@ export default class NewsModal extends Component {
                                                 onClick={() =>
                                                     addToCart(activeBook.bookID)
                                                 }
-                                                className="news_buttons">
+                                                className="btn btn-success mx-3">
                                                 Add To Cart
                                             </button>
                                         )}
                                     </span>
                                 </p>
-                                <h5 className="active-news__publisher">
-                                    Publisher:
-                                    <span>{activeBook["authors"]}</span>
-                                </h5>
                             </div>
                         )}{" "}
                     </div>

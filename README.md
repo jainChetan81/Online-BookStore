@@ -1,8 +1,12 @@
-**WELCOME! **
+**WELCOME to CHETAN BOOKSTORE! **
 
 -   This is a Ecommerce App for Books
 -   Tech Stacks: _HTML5, CSS, JAVASCRIPT, REACTJS, IndexDB_
 -   **IndexDB** has been Used to store list of All Books and Books in Cart
+-   This App has **Search Functionality**.
+-   You can also **Sort** throgh the list by ratings in descending order which are shown in Start Format
+-   **Cart** Feature has been Implemented
+-   **Checkout** Functionality with **Payment** option has been implemented
 -   For _Local Deployment_ go to _CLI_ and type **npm install** to install libraries and then **npm start**
 -   Deployment Link: https://chetan-online-bookstore.herokuapp.com/
 -   Github Link: https://github.com/jainChetan81/Online-BookStore/
@@ -21,8 +25,8 @@
 -   In the next step click on **Checkout** to fill you shipping info and complete Shopping
     ![Adding Shipping Address][6]
 
-[1]: https://he-s3.s3.amazonaws.com/media/uploads/77c7ed1.png
-[2]: https://he-s3.s3.amazonaws.com/media/uploads/a4bd315.png
+[1]: https://he-s3.s3.amazonaws.com/media/uploads/86dd7b2.png
+[2]: https://he-s3.s3.amazonaws.com/media/uploads/97cafba.png
 [3]: https://he-s3.s3.amazonaws.com/media/uploads/bbe0e2d.png
 [4]: https://he-s3.s3.amazonaws.com/media/uploads/cb24a2c.png
 [5]: https://he-s3.s3.amazonaws.com/media/uploads/3f56ea9.png

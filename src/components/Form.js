@@ -1,5 +1,5 @@
 import React from "react";
-const Form = ({ getBooks }) => (
+const Form = ({ getBooks, sortByRatings }) => (
     <form
         onSubmit={(e) => {
             e.preventDefault();
@@ -12,7 +12,12 @@ const Form = ({ getBooks }) => (
             name="books"
             placeholder="Press Enter to search"
         />
-        <button className="form__button">Search</button>
+        <button type="submit" className="form__button">
+            Search
+        </button>
+        <button type="button" onClick={sortByRatings} className="form__button">
+            Sort By Ratings
+        </button>
     </form>
 );
 export default Form;

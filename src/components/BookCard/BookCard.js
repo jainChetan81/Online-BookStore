@@ -1,6 +1,7 @@
 import React from "react";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import StarIcon from "@material-ui/icons/Star";
 
 export default function NewsCard({
     item,
@@ -12,6 +13,14 @@ export default function NewsCard({
     const buyNow = (book) => {
         if (!book.inCart) addToCart(book.bookID);
         history.push("/checkout");
+    };
+
+    const averageRatings = (num) => {
+        let v = [];
+        for (let i = 1; i < Math.round(num); i++) {
+            v.push(<StarIcon key={i} />);
+        }
+        return v;
     };
 
     const image = `https://source.unsplash.com/300x2${item.bookID + 10}`;
@@ -69,7 +78,7 @@ export default function NewsCard({
                     </b>
                 </button>
                 <span className="videoSidebar__button">
-                    {item.average_rating}
+                    {averageRatings(item.average_rating)}
                 </span>
             </div>
         </div>
