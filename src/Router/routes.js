@@ -2,7 +2,7 @@ import Dashboard from "../Container/Dashboard";
 import Checkout from "../Container/Checkout";
 const routes = [
     {
-        path: "/",
+        path: "",
         name: "Dashboard",
         component: Dashboard,
         layout: "/",
