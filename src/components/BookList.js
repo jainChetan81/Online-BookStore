@@ -91,7 +91,6 @@ const BookList = ({
                                         history={history}
                                     />
                                 ))}
-                                
                             </div>
                         </Auxillary>
                     )}
